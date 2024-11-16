@@ -24,7 +24,7 @@ export default function PromptPage() {
             <div className="bg-primary rounded-lg border-gray border-2 py-3 px-2 md:px-4 h-fit">
               <form action="" className="space-y-3" onSubmit={handleGenerateTips}>
                 <Select label={"Type"} options={optionsType} onChange={handleTypeChange} disabled={loading}/>
-                <TextAreaInput label="Prompt" placeholder="Enter waste type, e.g., plastic, paper, banana leaves" rows={5} onChange={handleTrashChange} disabled={loading} />
+                <TextAreaInput label="Trash" placeholder="Enter waste type, e.g., plastic, paper, banana leaves" rows={5} onChange={handleTrashChange} disabled={loading} />
                 <Button variant="success" type="submit" disabled={loading}>
                   {loading ? "Loading..." : "Generate Tips"}
                 </Button>
