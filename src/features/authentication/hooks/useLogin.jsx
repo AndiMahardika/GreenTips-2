@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { loginSchemaValidation } from "../validation/auth.validation.js";
 import { loginUser } from "../service/api.login.js";
 import useUser from "../../../store/userStore.js";
+import { jwtDecode } from "jwt-decode";
 
 export default function useLogin() {
   const navigate = useNavigate();
@@ -49,9 +50,22 @@ export default function useLogin() {
       return setError("Invalid credentials.");
     }
 
-    const token = `token-${data.id}`;
-    localStorage.setItem("token", token);
-    setUser(data);
+    // console.log("login user", data.data.token);
+
+    // const token = `token-${data.id}`;
+    localStorage.setItem("token", data.data.token);
+    // exclude token
+    // const decode = jwtDecode(data.data.token);
+    // console.log("decode", decode);
+
+    const dataUser = {
+      id: data.data.id_user,
+      name: data.data.nama_lengkap,
+      email: data.data.email,
+    }
+    // console.log("data user", dataUser);
+
+    setUser(data.data);
 
     navigate("/prompt");
   }

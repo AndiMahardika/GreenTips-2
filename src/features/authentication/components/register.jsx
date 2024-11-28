@@ -8,7 +8,7 @@ import viewEye from "../../../assets/view.png"
 import hideEye from "../../../assets/hide.png"
 
 export default function Register() {
-  const { loading, error, errorEmail, errorPassword, errorName, isRegistered, handleRegister } = useRegister();
+  const { loading, error, errorEmail, errorPassword, errorName, isRegistered, errorDate, errorPhone, handleRegister } = useRegister();
   const [isHidePassword, setIsHidePassword] = useState(true);
 
   const handleHidePassword = () => {
@@ -26,9 +26,12 @@ export default function Register() {
           <form className="space-y-3" onSubmit={handleRegister} noValidate>
             <Input id="name" label="Name" type="text" placeholder="Name" />
             <p className="text-xs text-red-600">{errorName}</p>
+            <Input id="date" label="Date of Birth" type="date" placeholder="Date of Birth" />
+            <p className="text-xs text-red-600">{errorDate}</p>
+            <Input id="phone" label="Phone" type="text" placeholder="Phone" />
+            <p className="text-xs text-red-600">{errorPhone}</p>
             <Input id="email" label="Email" type="email" placeholder="Email" />
             <p className="text-xs text-red-600">{errorEmail}</p>
-            {/* <Input id="password" label="Password" type="password" placeholder="Password" /> */}
             <div className="relative">
               <Input id="password" label="Password" type={isHidePassword ? "password" : "text"} placeholder="Password" />
               <div className="absolute right-0 bottom-1">

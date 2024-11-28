@@ -7,7 +7,9 @@ export const loginSchema = zod.object({
 });
 
 export const registerSchema = zod.object({
-  name: zod.string().min(3, "Name must be at least 3 characters"),
+  nama_lengkap: zod.string().min(3, "Name must be at least 3 characters"),
+  tanggal_lahir: zod.string().min(8, "Date must be at least 8 characters"),
+  no_telepon: zod.string().min(9, "Phone must be at least 9 characters"),
   email: zod.string().email(),
   password: zod.string().min(8, "Password must be at least 8 characters"),
 });
@@ -23,12 +25,13 @@ export function loginSchemaValidation({email, password}) {
   }
 }
 
-export function registerSchemaValidation({name, email, password}) {
+export function registerSchemaValidation({nama_lengkap, tanggal_lahir, no_telepon, email, password}) {
   try {
-    registerSchema.parse({name, email, password});
+    registerSchema.parse({nama_lengkap, tanggal_lahir, no_telepon, email, password});
     return null;
   } catch (error) {
     const validationError = fromError(error);
+    // console.error(validationError.details.map(issue => issue.message));
     return validationError.details.map(issue => issue.message);
   }
 }

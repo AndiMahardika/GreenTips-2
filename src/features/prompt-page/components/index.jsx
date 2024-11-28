@@ -17,7 +17,7 @@ export default function PromptPage() {
   return (
     <Layout>
       <main className="bg-secondary h-fit">
-        <h3 className="font-bold text-3xl text-white px-3 mb-3 md:mb-0">Welcome, {user?.name} !!!</h3>
+        <h3 className="font-bold text-3xl text-white px-3 mb-3 md:mb-0">Welcome, {user?.nama_lengkap} !!!</h3>
         <section className="grid md:grid-cols-2 md:p-3 gap-3 md:gap-6">
           <section className="flex flex-col">
             {/* form */}
